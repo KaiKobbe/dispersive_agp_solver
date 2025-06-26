@@ -9,12 +9,24 @@ We compute exact solutions for the DAGP in the following setting:
 - The guard distances are given by the geodesic $L_1$-metric, i.e., the length of a shortest rectilinear path that stays inside $\mathcal P$
 - We use r-visibility, i.e., two points $p,q \in \mathcal P$ see each other if and only if the axis-parallel rectangle defined by $p$ and $q$ is fully contained inside $\mathcal P$.
 
-Our solver uses significant parts of the DAGP solver by Dominik Krupke, but uses a different witness strategy, distance measure, and visibility model.
+Our solver uses significant parts of the [DAGP solver by Dominik Krupke](https://github.com/d-krupke/dispersive_agp_solver), but uses a different witness strategy, distance measure, and visibility model.
 We also complement the solver with an extensive evaluation.
 
 
 ## Installation
 
+## Example Usage
+
 ## Mathematical Formulation
 
 ## SAT Formulation
+
+## Solver Evaluation
+
+Further details can be found in...
+
+## License
+
+While this code is licensed under the MIT license, it has a dependency on
+[CGAL](https://www.cgal.org/), which is licensed under GPL. This may have some
+implications for commercial use.
