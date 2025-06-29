@@ -53,7 +53,7 @@ plot_solution(instance, guards=solution)
 
 Let $\mathcal P$ denote a polygonal region with vertex set $V(\mathcal P)$.
 The geodesic $L_1$-distance between two guards $g,g' \in V(\mathcal V)$ is denoted by $\delta(g,g')$.
-The set of points that are r-visible to a guard $g \in V(\mathcal P)$, i.e., the visibility region of $g$, is denoted as $\operatorname{Vis}(g)$.
+The set of points that are r-visible to a guard $g \in V(\mathcal P)$, i.e., the visibility region of $g$, is denoted as $\Vis(g)$.
 The _shadow witness set_ of $\mathcal P$ is denoted by $\mathcal W$.
 The key idea is to construct the arrangement of visibility polygons defined by the polygon’s vertices, where each face (referred to as AVP) is covered by the same guard set. 
 From this arrangement, shadow AVPs are identified as the local minima in the partial order of AVPs based on their covering sets. 
@@ -65,7 +65,7 @@ For each possible guard position $g \in V(\mathcal P)$, we introduce a binary va
 We also introduce a continuous variable $\ell \in \mathbb{R}^+$ representing the dispersion distance of the solution.
 The objective maximizes $\ell$, subject to
 
-$$\forall w\in \mathcal{W}: \sum_{g \in V(\mathcal{P}), w\in \operatorname{Vis}(g)} x_g \geq 1$$
+$$\forall w\in \mathcal{W}: \sum_{g \in V(\mathcal{P}), w\in Vis(g)} x_g \geq 1$$
 
 ensuring that every shadow witness is seen by at least one guard, and
 
@@ -81,7 +81,7 @@ Note that there are only quadratic many possible objective values, which are imp
 For efficiency, $\ell$ is updated based on the actual solution returned by the SAT solver rather than just the probed values.
 The existence of a guard set with dispersion distance $\ell$ can be checked by
 
-$$\bigwedge_{w \in \mathcal{W}} \left(\bigvee_{g \in V(\mathcal{P}), w \in \operatorname{Vis}(g)} x_g\right)$$
+$$\bigwedge_{w \in \mathcal{W}} \left(\bigvee_{g \in V(\mathcal{P}), w \in Vis(g)} x_g\right)$$
 
 ensuring coverage, and
 
