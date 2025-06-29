@@ -53,7 +53,7 @@ plot_solution(instance, guards=solution)
 
 Let $\mathcal P$ denote a polygonal region with vertex set $V(\mathcal P)$.
 The geodesic $L_1$-distance between two guards $g,g' \in V(\mathcal V)$ is denoted by $\delta(g,g')$.
-The set of points that are r-visible to a guard $g \in V(\mathcal P)$, i.e., the visibility region of $g$, is denoted as $\Vis(g)$.
+The set of points that are r-visible to a guard $g \in V(\mathcal P)$, i.e., the visibility region of $g$, is denoted as $Vis(g)$.
 The _shadow witness set_ of $\mathcal P$ is denoted by $\mathcal W$.
 The key idea is to construct the arrangement of visibility polygons defined by the polygon’s vertices, where each face (referred to as AVP) is covered by the same guard set. 
 From this arrangement, shadow AVPs are identified as the local minima in the partial order of AVPs based on their covering sets. 
