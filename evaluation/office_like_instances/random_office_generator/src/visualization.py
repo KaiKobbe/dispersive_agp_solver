@@ -3,7 +3,7 @@ from shapely.geometry import Polygon
 import matplotlib.patches as patches
 
 def visualize_polygon(vertices, holes=[], dark_grey_rects=[], tried=[]):
-    """Visualization for given SCOT"""
+    """Visualization for given office-like polygons"""
     fig, ax = plt.subplots()
     polygon = Polygon(vertices)
     

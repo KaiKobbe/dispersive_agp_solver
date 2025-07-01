@@ -5,20 +5,20 @@ from shapely.geometry import Polygon
 
 from src.rectangle import Rectangle
 
-class RandomSCOTGenerator:
-    """Creates a random SCOT with a specified number of rooms and corridors in total"""
+class RandomOfficeGenerator:
+    """Creates a random office-like polygon with a specified number of rooms and corridors in total"""
 
-    def random_scot(self, num_rooms_and_corridors: int, hole_free=False) -> tuple[Rectangle, Rectangle]:
+    def random_office(self, num_rooms_and_corridors: int, hole_free=False) -> tuple[Rectangle, Rectangle]:
 
         self.density = max(1, int(0.05 * num_rooms_and_corridors))
         self.room_max_size = num_rooms_and_corridors
 
-        # Init SCOT
+        # Init office
         self.rooms = [Rectangle(random.randint(1, num_rooms_and_corridors), random.randint(1, num_rooms_and_corridors), (num_rooms_and_corridors*self.density)//2, (num_rooms_and_corridors*self.density)//2)]
         self.corridors = []
         self.free_corridors = [] # can be deleted without losing connectivity
 
-        # Bounding box of the SCOT so far
+        # Bounding box of the office so far
         self.max_x = self.rooms[0].x + self.rooms[0].width
         self.min_x = self.rooms[0].x
         self.max_y = self.rooms[0].y + self.rooms[0].height
