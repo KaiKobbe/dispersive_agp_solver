@@ -20,9 +20,10 @@ A full version is available on [arXiv](https://arxiv.org/abs/2506.21307).
 The paper also provides a more detailed overview of previous work on the DAGP.
 
 ## Installation
-tbd
+Before the solver can be used, it is mandatory to install our package for [r-visibility polygons](https://github.com/KaiKobbe/r_visibility_polygons).
+Afterward, it should be easy to install the solver using the following command:
 
-[r-visibility polygons](https://github.com/KaiKobbe/r_visibility_polygons)
+Note that for using the MIP formulation, it is necessary to have an active Gurobi license.
 
 ## Usage
 
@@ -52,7 +53,7 @@ plot_solution(instance, guards=solution)
 ## Formulations
 
 Let $\mathcal P$ denote a polygonal region with vertex set $V(\mathcal P)$.
-The geodesic $L_1$-distance between two guards $g,g' \in V(\mathcal V)$ is denoted by $\delta(g,g')$.
+The geodesic $L_1$-distance between two guards $g,g' \in V(\mathcal V)$ is denoted as $\delta(g,g')$.
 The set of points that are r-visible to a guard $g \in V(\mathcal P)$, i.e., the visibility region of $g$, is denoted as $Vis(g)$.
 The _shadow witness set_ of $\mathcal P$ is denoted by $\mathcal W$.
 The key idea is to construct the arrangement of visibility polygons defined by the polygon’s vertices, where each face (referred to as AVP) is covered by the same guard set. 
@@ -76,10 +77,11 @@ Note that the second type of constraint is not linear but can be reformulated as
 
 ### SAT
 As above, each  $g \in V(\mathcal P)$ is associated with a binary variable $x_g \in \mathbb{B}$.
-We use a SAT-solver for the decision problem whether a guard set with dispersion distance $\ell$ exists and search the largest such $\ell$ using a binary search.
-Note that there are only quadratic many possible objective values, which are implied by the pairwise vertex distances of $\mathcal P$.
+We use a SAT-solver for the decision problem whether a guard set with dispersion distance $\ell$ exists and search the largest $\ell$ for which the solver answers positively.
+Note that the number of possible dispersion distances is quadratic in $|V(P)|$, allowing us to perform a binary search over the possible dispersion distances.
+there are only quadratic many possible objective values, which are implied by the pairwise vertex distances of $\mathcal P$.
 For efficiency, $\ell$ is updated based on the actual solution returned by the SAT solver rather than just the probed values.
-The existence of a guard set with dispersion distance $\ell$ can be checked by
+In a similar manner compared to the above formulation, the existence of a guard set with dispersion distance $\ell$ can be checked by
 
 $$\bigwedge_{w \in \mathcal{W}} \left(\bigvee_{g \in V(\mathcal{P}), w \in Vis(g)} x_g\right)$$
 
@@ -90,14 +92,7 @@ $$\bigwedge_{g, g' \in V(\mathcal{P}), \delta(g, g') < \ell} \left(\overline{x_{
 enforcing a minimum guard distance of $\ell$.
 
 ## Evaluation
-We evaluated the solvers for the following instances: 
-- 745 random orthogonal polygons from the [Salzburg Database](https://sbgdb.cs.sbg.ac.at)
-- 1599 random office-like polygons
-
-Summarizing the evaluation, the SAT-approach largely outperforms MIP and CP-SAT, being able to solve instances with $1600$ vertices in about 15 seconds.
-MIP and CP-SAT perform relative similarly.
-However, for large instances, CP-SAT seems to scale slightly better.
-While the SAT-approach performs similarly for random orthogonal polygons and office-like polygons, MIP and CP-SAT require less time to compute optimal solutions for office-like polygons.
+We evaluated the solvers for several orthogonal polygons and found that the SAT-approach largely outperforms the other two. 
 Further details on the evaluation can be found [here](https://github.com/KaiKobbe/dispersive_agp_solver/tree/main/evaluation/office_like_instances).
 
 ## License

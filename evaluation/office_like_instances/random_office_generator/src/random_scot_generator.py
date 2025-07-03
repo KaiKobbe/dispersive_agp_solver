@@ -6,10 +6,17 @@ from shapely.geometry import Polygon
 from src.rectangle import Rectangle
 
 class RandomOfficeGenerator:
-    """Creates a random office-like polygon with a specified number of rooms and corridors in total"""
+    """
+    Creates a random office-like polygon with a specified number of rooms and corridors in total.
+    The generator should be used only for small polygons (<= 1700 vertices) since it is not designed to be runtime-efficient.
+    """
 
-    def random_office(self, num_rooms_and_corridors: int, hole_free=False) -> tuple[Rectangle, Rectangle]:
-
+    def random_office(self, num_rooms_and_corridors: int, hole_free=False):
+        """
+        returns outer_boundary and inner_boundary where
+        (i) outer_boundary is a list of points, and
+        (ii) inner_boundary is a list of lists of points
+        """
         self.density = max(1, int(0.05 * num_rooms_and_corridors))
         self.room_max_size = num_rooms_and_corridors
 
@@ -55,7 +62,7 @@ class RandomOfficeGenerator:
 
         if num == -1: self.delete_corridor()
 
-        return self.rooms_corridors_to_graph(self.rooms + self.corridors), self.corridors
+        return self.rooms_corridors_to_graph(self.rooms + self.corridors)
     
     def update_bounding_box(self, room):
         self.max_x = max(self.max_x, room.x + room.width)
@@ -64,7 +71,7 @@ class RandomOfficeGenerator:
         self.min_y = min(self.min_y, room.y)
 
     def add_room(self):
-        """choses random room size/position and a connecting corridor"""
+        """chooses random room size/position and a connecting corridor"""
 
         # determine room size
         room_a = Rectangle(random.randint(1, self.room_max_size), random.randint(3, self.room_max_size))
