@@ -92,7 +92,7 @@ $$\bigwedge_{g, g' \in V(\mathcal{P}), \delta(g, g') < \ell} \left(\overline{x_{
 enforcing a minimum guard distance of $\ell$.
 
 ## Evaluation
-We evaluated the solvers for several orthogonal polygons and found that the SAT-approach largely outperforms the other two. 
+We analyzed solver performance across various types of orthogonal polygons and found that the SAT-based approach significantly outperforms the other two. 
 Further details on the evaluation can be found [here](https://github.com/KaiKobbe/dispersive_agp_solver/tree/main/evaluation/office_like_instances).
 
 ## License
