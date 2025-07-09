@@ -63,6 +63,31 @@ def get_instance_from_graphml_xz(filepath):
                 g = nx.read_graphml(xz)
                 return _convert(g)
 
+def get_instance(outer_boundary, holes):
+    assert _is_orthogonal(outer_boundary, holes)
+    int_outer_boundary = [(round(1000 * float(p[0])), round(1000 * float(p[1]))) for p in outer_boundary]
+    int_holes = []
+    for hole in holes:
+        int_holes += [(round(1000 * float(p[0])), round(1000 * float(p[1]))) for p in hole]
+    return _list_to_instance(outer_face=int_outer_boundary, holes=int_holes)
+
+def _is_simple_orthogonal(polygon):
+    n = len(polygon)
+    for i in range(n):
+        x1, y1 = polygon[i]
+        x2, y2 = polygon[(i + 1) % n]
+        if x1 != x2 and y1 != y2:
+            return False
+    return True
+
+def _is_orthogonal(outer_boundary, holes):
+    if not _is_simple_orthogonal(outer_boundary):
+        return False
+    for hole in holes:
+        if not _is_simple_orthogonal(hole):
+            return False
+    return True
+
 def _integralize(g: nx.Graph, s: int):
     for n in g.nodes:
         g.nodes[n]["vertex-coordinate-x"] = round(
