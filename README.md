@@ -1,10 +1,5 @@
 # Dispersive Art Gallery Problem - MIP, CP, and SAT
 
-> ⚠️ **Disclaimer**  
-> This repository is newly set up.  
-> It may take a few more days until everything works smoothly and is documented.  
-> Feel free to check back soon!
-
 Given a polygonal domain $\mathcal P$, a finite set $\mathcal G \subset \mathcal P$ is a _guard set_ if every point in $\mathcal P$ is seen by at least one guard in $\mathcal G$.
 In the classic _Art Gallery Problem_, the aim is to find a guard set of minimum cardinality.
 In contrast, the Dispersive Art Gallery Problem (DAGP) seeks a guard set that maximizes the minimum pairwise distance between guards (referred to as _dispersion distance_). 
