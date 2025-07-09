@@ -21,8 +21,9 @@ A full version is available on [arXiv](https://arxiv.org/abs/2506.21307).
 The paper also provides a more detailed overview of previous work on the DAGP.
 
 ## Installation
-Before the solver can be used, it is mandatory to install our package for [r-visibility polygons](https://github.com/KaiKobbe/r_visibility_polygons). 
-This can be done via the following command (using this package requires a modern C++ compiler):
+Before the solver can be used, it is mandatory to install our package for [r-visibility polygons](https://github.com/KaiKobbe/r_visibility_polygons).
+(The package requires a modern C++ compiler.)
+This can be done via the following command:
 
 ```bash
 pip install --verbose git+https://github.com/KaiKobbe/r_visibility_polygons/tree/main/rvispoly-main
@@ -40,7 +41,6 @@ Note that an active Gurobi license is required to use the MIP solver.
 
 Below, a very simple example is given.
 Solving the instance to optimality should be done immediately.
-Note that, especially for larger instances, _plot_instance()_ may take some time if the bottleneck should be depicted, as it currently determines this by simple pairwise comparisons.
 
 ```python
 from dispersive_agp_solver import get_instance, solve, plot_solution
@@ -69,14 +69,14 @@ plot_solution(instance, guards=solution)
 ```
 
 By default, the SAT-based approach is used.
-This can be modified by using `solve(instance, backend="CP-SAT")` or `solve(instance, backend="MIP")`.
+This can be modified by using `solve(instance, backend="CP-SAT")` or `solve(instance, backend="MIP")` instead.
 
 ## Formulations
 
 Let $\mathcal P$ denote a polygonal region with vertex set $V(\mathcal P)$.
 The geodesic $L_1$-distance between two guards $g,g' \in V(\mathcal V)$ is denoted as $\delta(g,g')$.
 The set of points that are r-visible to a guard $g \in V(\mathcal P)$, i.e., the visibility region of $g$, is denoted as $Vis(g)$.
-The _shadow witness set_ of $\mathcal P$ is denoted by $\mathcal W$.
+To ensure full coverage, we use a shadow witness set $\mathcal W$; see for example the work of [Couto et al.](https://link.springer.com/chapter/10.1007/978-3-540-68552-4_8):
 The key idea is to construct the arrangement of visibility polygons defined by the polygon’s vertices, where each face (referred to as AVP) is covered by the same guard set. 
 From this arrangement, shadow AVPs are identified as the local minima in the partial order of AVPs based on their covering sets. 
 Selecting a single witness from each shadow AVP ensures full coverage of the polygon, even under r-visibility constraints.
@@ -99,10 +99,9 @@ Note that the second type of constraint is not linear but can be reformulated as
 ### SAT
 As above, each  $g \in V(\mathcal P)$ is associated with a binary variable $x_g \in \mathbb{B}$.
 We use a SAT-solver for the decision problem whether a guard set with dispersion distance $\ell$ exists and search the largest $\ell$ for which the solver answers positively.
-Note that the number of possible dispersion distances is quadratic in $|V(P)|$, allowing us to perform a binary search over the possible dispersion distances.
-there are only quadratic many possible objective values, which are implied by the pairwise vertex distances of $\mathcal P$.
+Note that the number of possible dispersion distances is quadratic in $|V(P)|$, allowing us to perform a binary search over them.
 For efficiency, $\ell$ is updated based on the actual solution returned by the SAT solver rather than just the probed values.
-In a similar manner compared to the above formulation, the existence of a guard set with dispersion distance $\ell$ can be checked by
+Similarly to the above formulation, the existence of a guard set with dispersion distance $\ell$ can be checked by
 
 $$\bigwedge_{w \in \mathcal{W}} \left(\bigvee_{g \in V(\mathcal{P}), w \in Vis(g)} x_g\right)$$
 
@@ -114,7 +113,7 @@ enforcing a minimum guard distance of $\ell$.
 
 ## Evaluation
 We analyzed solver performance across various types of orthogonal polygons and found that the SAT-based approach significantly outperforms the other two. 
-Further details on the evaluation can be found [here](https://github.com/KaiKobbe/dispersive_agp_solver/tree/main/evaluation/office_like_instances).
+Further details on the evaluation can be found [here](https://github.com/KaiKobbe/dispersive_agp_solver/tree/main/evaluation).
 
 ## License
 
