@@ -4,11 +4,11 @@ from .backends._common.guard_distances import GuardDistances
 from .backends._common.guard_coverage import GuardCoverage
 import itertools
 
-# Some IPE standards
 LINE_WIDTH = {"normal": 0.2, "heavier": 0.8, "fat": 1.2, "ultrafat": 2}
 SYMBOL_SIZE = {"tiny": 1, "small": 2.5, "normal": 3, "large": 3}
 COLORS = {"red": "#BC403A", "green": "#45B26C", "blue": "#2065B8", "black": "#000000", "dark_grey": "#7E7F7F", "grey": "#BCBCBE", "light_grey": "#EAEDEF"}
-    
+
+# Note that the function is not very efficient but should suffice for our purposes
 def plot_polygon(polygon, color=COLORS["light_grey"], ax=None, lined=True, alpha=1, line_width=None):
         if not line_width: line_width = LINE_WIDTH["normal"]
         if ax is None:
