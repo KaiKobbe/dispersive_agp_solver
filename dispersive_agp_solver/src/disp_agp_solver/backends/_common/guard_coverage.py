@@ -5,10 +5,10 @@ This file implements geometric computations for making sure that we cover the wh
 import logging
 import typing
 
-from rvispoly import Point, Polygon, PolygonWithHoles, VisibilityPolygonCalculator
+from r_vis_poly import Point, Polygon, PolygonWithHoles, VisibilityPolygonCalculator
 
-from disp_agp_solver.instance import Instance
-from disp_agp_solver._utils.timer import Timer as StopWatch
+from dispersive_agp_solver.instance import Instance
+from dispersive_agp_solver._utils.timer import Timer as StopWatch
 
 
 class GuardCoverage:

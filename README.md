@@ -12,18 +12,29 @@ Notably, in this formulation, the number of guards is irrelevant.
 Objectives of this type naturally occur in many situations, e.g. in sensor deployment, where it is crucial to balance sensor spacing and signal coverage.
 We compute exact solutions for the DAGP restricted to _vertex guards_ in orthogonal polygons. 
 To this end, we use _r-visibility_ and measure distances according to the geodesic $L_1$-metric.
+The main purpose is to compare solvers based on SAT (PySAT), CP-SAT, and MIP (Gurobi).
 
-Our solver builds on significant portions of [Dominik Krupke's implementation](https://github.com/d-krupke/dispersive_agp_solver), but differs in the witness strategy, distance measure, and visibility model. 
+This solver builds on significant portions of [Dominik Krupke's implementation](https://github.com/d-krupke/dispersive_agp_solver), but differs in the witness strategy, distance measure, and visibility model. 
 In addition, we complement the solver with a comprehensive performance evaluation.
 A section of the paper "Guarding Offices with Maximum Dispersion" (to appear at the [International Symposium on Mathematical Foundations of Computer Science 2025](https://mfcs2025.mimuw.edu.pl)) is devoted to this solver and its evaluation. 
 A full version is available on [arXiv](https://arxiv.org/abs/2506.21307).
 The paper also provides a more detailed overview of previous work on the DAGP.
 
 ## Installation
-Before the solver can be used, it is mandatory to install our package for [r-visibility polygons](https://github.com/KaiKobbe/r_visibility_polygons).
+Before the solver can be used, it is mandatory to install our package for [r-visibility polygons](https://github.com/KaiKobbe/r_visibility_polygons). 
+This can be done via the following command (using this package requires a modern C++ compiler):
+
+```bash
+pip install --verbose git+https://github.com/KaiKobbe/r_visibility_polygons/tree/main/rvispoly-main
+```
+
 Afterward, it should be easy to install the solver using the following command:
 
-Note that for using the MIP formulation, it is necessary to have an active Gurobi license.
+```bash
+pip install --verbose git+https://github.com/KaiKobbe/dispersive_agp_solver/tree/main/dispersive_agp_solver
+```
+
+Note that an active Gurobi license is required to use the MIP solver.
 
 ## Usage
 
@@ -35,20 +46,30 @@ Note that, especially for larger instances, _plot_instance()_ may take some time
 from dispersive_agp_solver import get_instance, solve, plot_solution
 
 # construct a simple instance
-outer_boundary = []
+# outer_boundary should be in CCW order, holes CW
+outer_boundary = [
+    (0, 0),
+    (10, 0),
+    (10, 10),
+    (0, 10)
+]
+
 holes = [
-    [],
-    [],
-    []
+    [(2, 2), (2, 4), (4, 4), (4, 2)],
+    [(6, 2), (6, 5), (8, 5), (8, 2)],
+    [(3, 6), (3, 8), (7, 8), (7, 6)]
 ]
 instance = get_instance(outer_boundary, holes)
 
 # compute a guard set with maximum dispersion for the above instance
-solution, objective, stats = solve(instance)
+solution, objective = solve(instance)
 
 # plot the solution 
 plot_solution(instance, guards=solution)
 ```
+
+By default, the SAT-based approach is used.
+This can be modified by using `solve(instance, backend="CP-SAT")` or `solve(instance, backend="MIP")`.
 
 ## Formulations
 

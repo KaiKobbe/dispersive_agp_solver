@@ -1,7 +1,7 @@
 import logging
 import typing
 
-from disp_agp_solver.instance import Instance
+from dispersive_agp_solver.instance import Instance
 
 from .optimizer import SatBasedOptimizer
 from .params import OptimizerParams, SearchStrategy

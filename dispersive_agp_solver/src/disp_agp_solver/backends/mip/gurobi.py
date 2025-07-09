@@ -12,7 +12,7 @@ from enum import Enum
 import gurobipy as gp
 from gurobipy import GRB
 
-from disp_agp_solver.instance import Instance
+from dispersive_agp_solver.instance import Instance
 
 from .._common import GuardCoverage, GuardDistances, WitnessStrategy
 

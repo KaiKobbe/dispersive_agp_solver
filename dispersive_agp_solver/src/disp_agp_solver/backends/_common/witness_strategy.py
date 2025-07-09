@@ -3,10 +3,10 @@ This file implements the shadow witness strategy.
 """
 import typing
 
-from rvispoly import Point, Polygon, AVP_Arrangement
+from r_vis_poly import Point, Polygon, AVP_Arrangement
 
-from disp_agp_solver.instance import Instance
-from disp_agp_solver._utils.timer import Timer as StopWatch
+from dispersive_agp_solver.instance import Instance
+from dispersive_agp_solver._utils.timer import Timer as StopWatch
 from .guard_coverage import GuardCoverage
 
 class WitnessStrategy:

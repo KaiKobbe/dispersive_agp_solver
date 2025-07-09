@@ -4,8 +4,8 @@ import math
 import typing
 from enum import Enum
 
-from disp_agp_solver._utils.timer import Timer
-from disp_agp_solver.instance import Instance
+from dispersive_agp_solver._utils.timer import Timer
+from dispersive_agp_solver.instance import Instance
 
 from .._common import GuardDistances
 from .basic_sat_model import BasicSatModel

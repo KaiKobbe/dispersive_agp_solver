@@ -3,7 +3,7 @@ import networkx as nx
 import lzma
 from pathlib import Path
 
-from rvispoly import Point, Polygon, PolygonWithHoles
+from r_vis_poly import Point, Polygon, PolygonWithHoles
 
 Position = typing.Tuple[int, int]
 

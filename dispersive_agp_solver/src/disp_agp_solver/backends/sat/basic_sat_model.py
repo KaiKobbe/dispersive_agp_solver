@@ -4,8 +4,8 @@ from threading import Timer
 
 from pysat.solvers import Solver
 
-from disp_agp_solver._utils.timer import Timer as StopWatch
-from disp_agp_solver.instance import Instance
+from dispersive_agp_solver._utils.timer import Timer as StopWatch
+from dispersive_agp_solver.instance import Instance
 
 
 class BasicSatModel:

@@ -6,10 +6,10 @@ build-backend = "setuptools.build_meta"
 where = ["src"]
 
 [project]
-name = "disp_agp_solver"
+name = "dispersive_agp_solver"
 version = "0.1.0"
 authors = []
-description = "Util for benchmarking algorithms."
+description = "Solvers based on SAT, CP-SAT, and MIP for the dispersive art gallery problem."
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
@@ -18,7 +18,7 @@ classifiers = [
     "Development Status :: 3 - Alpha",
 ]
 dependencies = [
-"rvispoly",
+"r_vis_poly",
 "python-sat",
 "networkx",
 "ortools",

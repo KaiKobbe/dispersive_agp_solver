@@ -13,8 +13,8 @@ from typing import Any
 
 from ortools.sat.python import cp_model
 
-from disp_agp_solver._utils.timer import Timer
-from disp_agp_solver.instance import Instance
+from dispersive_agp_solver._utils.timer import Timer
+from dispersive_agp_solver.instance import Instance
 
 from .._common import GuardCoverage, GuardDistances, WitnessStrategy
 

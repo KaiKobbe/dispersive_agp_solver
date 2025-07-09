@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from rvispoly import PolygonWithHoles
+from r_vis_poly import PolygonWithHoles
 from .backends._common.guard_distances import GuardDistances
 from .backends._common.guard_coverage import GuardCoverage
 import itertools

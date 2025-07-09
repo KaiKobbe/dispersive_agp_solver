@@ -1,6 +1,6 @@
 """
 This code computes the geodesic distances between all pairs of positions in an instance.
-It is based on the visibility polygon calculator from the rvispoly package.
+It is based on the visibility polygon calculator from the r_vis_poly package.
 It is a well known result that the geodesic distance between two points in a polygon
 can be computed purely by connecting all vertices that can view each other and then
 computing the shortest path between the two points in the resulting graph.
@@ -12,8 +12,8 @@ import typing
 
 import rustworkx as rw
 
-from disp_agp_solver.instance import Instance
-from disp_agp_solver._utils.timer import Timer as StopWatch
+from dispersive_agp_solver.instance import Instance
+from dispersive_agp_solver._utils.timer import Timer as StopWatch
 
 from .guard_coverage import GuardCoverage
 

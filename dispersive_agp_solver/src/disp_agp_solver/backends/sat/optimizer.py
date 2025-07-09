@@ -3,10 +3,10 @@ import math
 import typing
 from enum import Enum
 
-from rvispoly import Point
+from r_vis_poly import Point
 
-from disp_agp_solver._utils import Timer
-from disp_agp_solver.instance import Instance
+from dispersive_agp_solver._utils import Timer
+from dispersive_agp_solver.instance import Instance
 
 from .._common import GuardCoverage, GuardDistances, WitnessStrategy
 from .distance_optimizer import DistanceOptimizer, SearchStrategy
