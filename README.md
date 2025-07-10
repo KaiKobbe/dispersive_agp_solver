@@ -27,7 +27,7 @@ pip install --verbose git+https://github.com/KaiKobbe/r_visibility_polygons/tree
 Afterward, it should be easy to install the solver using the following command:
 
 ```bash
-pip install --verbose git+https://github.com/KaiKobbe/dispersive_agp_solver/tree/main/dispersive_agp_solver
+pip install --verbose git+https://github.com/KaiKobbe/dispersive_agp_solver
 ```
 
 Note that an active Gurobi license is required to use the MIP solver.
