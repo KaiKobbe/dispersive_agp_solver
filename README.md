@@ -21,7 +21,7 @@ Before the solver can be used, it is mandatory to install our package for [r-vis
 This can be done via the following command:
 
 ```bash
-pip install --verbose git+https://github.com/KaiKobbe/r_visibility_polygons/tree/main/rvispoly-main
+pip install --verbose git+https://github.com/KaiKobbe/r_visibility_polygons
 ```
 
 Afterward, it should be easy to install the solver using the following command:
