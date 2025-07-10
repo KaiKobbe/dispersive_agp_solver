@@ -12,12 +12,13 @@ more tractable than general point guards.
 """
 
 from .backends import OptimizerParams, SearchStrategy, solve
-from .instance import Instance, get_instance_from_graphml_xz
+from .instance import Instance, get_instance_from_graphml_xz, get_instance
 from .plotting import plot_instance, plot_polygon
 
 __all__ = [
     "Instance",
     "get_instance_from_graphml_xz",
+    "get_instance"
     "plot_instance",
     "plot_polygon",
     "solve",
