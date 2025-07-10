@@ -5,7 +5,7 @@ This file implements geometric computations for making sure that we cover the wh
 import logging
 import typing
 
-from r_vis_poly import Point, Polygon, PolygonWithHoles, VisibilityPolygonCalculator
+from rvispoly import Point, Polygon, PolygonWithHoles, VisibilityPolygonCalculator
 
 from dispersive_agp_solver.instance import Instance
 from dispersive_agp_solver._utils.timer import Timer as StopWatch

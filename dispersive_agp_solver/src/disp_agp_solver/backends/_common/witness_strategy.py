@@ -3,7 +3,7 @@ This file implements the shadow witness strategy.
 """
 import typing
 
-from r_vis_poly import Point, Polygon, AVP_Arrangement
+from rvispoly import Point, Polygon, AVP_Arrangement
 
 from dispersive_agp_solver.instance import Instance
 from dispersive_agp_solver._utils.timer import Timer as StopWatch

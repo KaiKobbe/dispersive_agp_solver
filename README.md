@@ -111,7 +111,6 @@ We analyzed solver performance across various types of orthogonal polygons and f
 Further details on the evaluation can be found [here](https://github.com/KaiKobbe/dispersive_agp_solver/tree/main/evaluation).
 
 ## License
-
 While this code is licensed under the MIT license, it has a dependency on
 [CGAL](https://www.cgal.org/), which is licensed under GPL. This may have some
 implications for commercial use.

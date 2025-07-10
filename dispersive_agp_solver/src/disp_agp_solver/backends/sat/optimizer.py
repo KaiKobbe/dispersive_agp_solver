@@ -3,7 +3,7 @@ import math
 import typing
 from enum import Enum
 
-from r_vis_poly import Point
+from rvispoly import Point
 
 from dispersive_agp_solver._utils import Timer
 from dispersive_agp_solver.instance import Instance

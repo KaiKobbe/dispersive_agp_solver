@@ -18,7 +18,7 @@ classifiers = [
     "Development Status :: 3 - Alpha",
 ]
 dependencies = [
-"r_vis_poly",
+"rvispoly",
 "python-sat",
 "networkx",
 "ortools",
