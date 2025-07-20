@@ -65,11 +65,7 @@ def get_instance_from_graphml_xz(filepath):
 
 def get_instance(outer_boundary, holes):
     assert _is_orthogonal(outer_boundary, holes)
-    int_outer_boundary = [(round(1000 * float(p[0])), round(1000 * float(p[1]))) for p in outer_boundary]
-    int_holes = []
-    for hole in holes:
-        int_holes += [(round(1000 * float(p[0])), round(1000 * float(p[1]))) for p in hole]
-    return _list_to_instance(outer_face=int_outer_boundary, holes=int_holes)
+    return _list_to_instance(outer_face=outer_boundary, holes=holes)
 
 def _is_simple_orthogonal(polygon):
     n = len(polygon)

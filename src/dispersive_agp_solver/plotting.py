@@ -26,7 +26,7 @@ def plot_polygon(polygon, color=COLORS["light_grey"], ax=None, lined=True, alpha
             if lined:
                 ax.plot(x, y, color=COLORS["black"], linewidth=line_width)
 
-def plot_instance(instance, guards=[], bottleneck=True, axis=False, scale=1, path=None, show=True):
+def plot_solution(instance, guards=[], bottleneck=True, axis=False, scale=1, path=None, show=True):
     fig, ax = plt.subplots(figsize=(6.4*scale, 4.8*scale))
     if not axis: ax.set_axis_off()
 
